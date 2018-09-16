@@ -4,6 +4,7 @@ var cnum = 1;
 var todayid = "";
 var nowYearMonth;
 var today = new Date();
+var firstDrawDiv=0;
 function setColor(type) {
     $("#" + nowid).css("background-color", "white");
     switch (type) {
@@ -53,8 +54,9 @@ function setCalendar(setDate) {
 
 
     for (let i = 1; i <= 6; i++) {
+       firstDrawDiv==0? $('#csstable').last().append("<div  class='csstr'></div>"):null;
         for (let j = 1; j <= 7; j++) {
-
+            firstDrawDiv==0?$('#csstable .csstr').last().append("<div class='csstd' id='R"+i+"C"+j+"' ></div>"):null;
 
             if (i == 1 && j == FirstDayWeek) {
 
@@ -94,12 +96,15 @@ function setCalendar(setDate) {
         }
 
     }
+    firstDrawDiv=1;
 
     $("#" + nowid).css("background-color", "red");
 };
 
 
 $(function () {
+
+    
 
     setCalendar(new Date());
     $("#R1C1").css("background-color", "red");
